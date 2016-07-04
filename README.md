@@ -2,11 +2,7 @@
 
 ![Code Corps Public Trellis Logo](https://d3pgew4wbk2vb1.cloudfront.net/images/github/code-corps-trellis-public.png)
 
-Ansible playbooks for setting up a LEMP stack for WordPress.
-
-- Local development environment with Vagrant
-- High-performance production servers
-- One-command deploys for your [Bedrock](https://roots.io/bedrock/)-based WordPress sites
+The public Trellis contains Ansible playbooks for setting up a LEMP stack for local WordPress development environments with Vagrant.
 
 ## What's included
 
@@ -39,25 +35,25 @@ Make sure all dependencies have been installed before moving on:
 
 ## Installation
 
-The recommended directory structure for a Trellis project looks like:
+Clone this repository along with the site itself into the following directory structure:
 
 ```shell
-example.com/      # → Root folder for the project
-├── trellis/      # → Your clone of this repository
-└── site/         # → A Bedrock-based WordPress site
+blog.codecorps.org/      # → Root folder for this project
+├── trellis-public/      # → Your clone of this repository
+├── trellis/             # → Your clone of the private Trellis repository (acccess limited; private for security)
+└── site/                # → Your clone of the site repository, a Bedrock-based WordPress site
     └── web/
-        ├── app/  # → WordPress content directory (themes, plugins, etc.)
-        └── wp/   # → WordPress core (don't touch!)
+        ├── wp/          # → WordPress core (don't touch!)
+        └── app/         # → WordPress content directory (themes, plugins, etc.)
+            └── web/themes/codecorps  # → Code Corps theme directory (where most blog dev work will happen)
 ```
 
-See a complete working example in the [roots-example-project.com repo](https://github.com/roots/roots-example-project.com).
-
-1. Create a new project directory: `$ mkdir example.com && cd example.com`
-2. Clone Trellis: `$ git clone --depth=1 git@github.com:roots/trellis.git && rm -rf trellis/.git`
-3. Clone Bedrock: `$ git clone --depth=1 git@github.com:roots/bedrock.git site && rm -rf site/.git`
+1. Create the main project directory (if not already created): `$ mkdir blog.codecorps.org && cd blog.codecorps.org`
+2. Clone Trellis: `$ git clone git@github.com:code-corps/blog.codecorps.org-trellis-public.git trellis-public`
+3. Clone the site: `$ git clone git@github.com:code-corps/blog.codecorps.org-site.git site`
 4. Install the Ansible Galaxy roles: `$ cd trellis && ansible-galaxy install -r requirements.yml`
 
-Windows user? [Read the Windows docs](https://roots.io/trellis/docs/windows/) for slightly different installation instructions. VirtualBox is known to have poor performance in Windows — use VMware or [see some possible solutions](https://discourse.roots.io/t/virtualbox-performance-in-windows/3932).
+Windows user? [Read the Trellis Windows docs](https://roots.io/trellis/docs/windows/) for slightly different installation instructions. Please modify them to match these docs. VirtualBox is known to have poor performance in Windows — use VMware or [see some possible solutions](https://discourse.roots.io/t/virtualbox-performance-in-windows/3932).
 
 ## Documentation
 
@@ -70,36 +66,10 @@ Trellis documentation is available at [https://roots.io/trellis/docs/](https://r
 
 [Read the local development docs](https://roots.io/trellis/docs/local-development-setup/) for more information.
 
-## Remote server setup (staging/production)
-
-A base Ubuntu 14.04 server is required for setting up remote servers.
-
-1. Configure your WordPress sites in `group_vars/<environment>/wordpress_sites.yml` and in `group_vars/<environment>/vault.yml` (see the [Vault docs](https://roots.io/trellis/docs/vault/) for how to encrypt files containing passwords)
-2. Add your server IP/hostnames to `hosts/<environment>`
-3. Specify public SSH keys for `users` in `group_vars/all/users.yml` (see the [SSH Keys docs](https://roots.io/trellis/docs/ssh-keys/))
-4. Run `ansible-playbook server.yml -e env=<environment>` to provision the server
-
-[Read the remote server docs](https://roots.io/trellis/docs/remote-server-setup/) for more information.
-
-## Deploying to remote servers
-
-1. Add the `repo` (Git URL) of your Bedrock WordPress project in the corresponding `group_vars/<environment>/wordpress_sites.yml` file
-2. Set the `branch` you want to deploy
-3. Run `./deploy.sh <environment> <site name>`
-4. To rollback a deploy, run `ansible-playbook rollback.yml -e "site=<site name> env=<environment>"`
-
-[Read the deploys docs](https://roots.io/trellis/docs/deploys/) for more information.
-
 ## Contributing
 
-Contributions are welcome from everyone. We have [contributing guidelines](https://github.com/roots/guidelines/blob/master/CONTRIBUTING.md) to help you get started.
+Contributions are welcome from everyone. We have [contributing guidelines](https://github.com/blog.codecorps.org-site/blob/master/CONTRIBUTING.md) to help you get started.
 
 ## Community
 
-Keep track of development and community news.
-
-* Participate on the [Roots Discourse](https://discourse.roots.io/)
-* Follow [@rootswp on Twitter](https://twitter.com/rootswp)
-* Read and subscribe to the [Roots Blog](https://roots.io/blog/)
-* Subscribe to the [Roots Newsletter](https://roots.io/subscribe/)
-* Listen to the [Roots Radio podcast](https://roots.io/podcast/)
+Join the Code Corps community at [https://codecorps.org/code-corps/code-corps]([https://codecorps.org/code-corps/code-corps])
