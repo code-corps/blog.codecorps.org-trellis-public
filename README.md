@@ -1,4 +1,4 @@
-# Code Corps Trellis (Public)
+# Code Corps WordPress Trellis (Public)
 
 ![Code Corps Public Trellis Logo](https://d3pgew4wbk2vb1.cloudfront.net/images/github/code-corps-trellis-public.png)
 
