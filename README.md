@@ -1,6 +1,6 @@
-# Trellis
+# Code Corps Trellis (Public)
 
-[![Build Status](https://travis-ci.org/roots/trellis.svg)](https://travis-ci.org/roots/trellis)
+![Code Corps Public Trellis Logo](https://d3pgew4wbk2vb1.cloudfront.net/images/github/code-corps-trellis-public.png)
 
 Ansible playbooks for setting up a LEMP stack for WordPress.
 
